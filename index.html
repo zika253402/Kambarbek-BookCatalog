@@ -5,19 +5,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Catalog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="card">
-        <img src="img/TheSongOfAchilles.jpg" alt="The Song of Achilles" class="card-image">
-        <h2 class="card-title">The Song of Achilles</h2>
-        <p class="card-price">$14.99</p>
-        <p class="card-author">by Madeline Miller</p>
-        <p class="card-description">A retelling of the Iliad from the perspective of Patroclus, exploring his
-            relationship with Achilles.</p>
-        <button class="card-button">Add to Cart</button>
-    </div>
+
+    <header class="header">
+        <a href="#hero" class="logo">BookCatalog</a>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="#books">Books</a></li>
+                <li><a href="#about">How it works</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <h1>Find your next favorite book</h1>
+            <p>Hand-picked stories, from ancient myths to modern classics.</p>
+            <a href="#books" class="btn">Browse books</a>
+        </section>
+
+        <section id="books" class="books">
+            <h2>Popular books</h2>
+            <div class="cards">
+
+                <article class="card">
+                    <img src="img/TheSongOfAchilles.jpg" alt="The Song of Achilles cover" class="card-image">
+                    <h3 class="card-title">The Song of Achilles</h3>
+                    <p class="card-author">by Madeline Miller</p>
+                    <p class="card-description">A retelling of the Iliad from the perspective of Patroclus, exploring
+                        his relationship with Achilles.</p>
+                    <p class="card-price">$14.99</p>
+                    <button class="card-button">Add to Cart</button>
+                </article>
+
+                <article class="card">
+                    <img src="img/TheCruelPrince.jpg" alt="The Cruel Prince cover" class="card-image">
+                    <h3 class="card-title">The Cruel Prince</h3>
+                    <p class="card-author">by Holly Black</p>
+                    <p class="card-description">A young faerie girl must navigate the dangerous world of the Fae courts.
+                    </p>
+                    <p class="card-price">$12.99</p>
+                    <button class="card-button">Add to Cart</button>
+                </article>
+
+                <article class="card">
+                    <img src="img/ShatterMe.jpg" alt="Shatter Me cover" class="card-image">
+                    <h3 class="card-title">Shatter Me</h3>
+                    <p class="card-author">by Tahereh Mafi</p>
+                    <p class="card-description">A young woman with the ability to destroy anything she touches.</p>
+                    <p class="card-price">$11.99</p>
+                    <button class="card-button">Add to Cart</button>
+                </article>
+
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2>How it works</h2>
+            <ol class="steps">
+                <li>
+                    <h3>Browse</h3>
+                    <p>Look through our hand-picked catalog.</p>
+                </li>
+                <li>
+                    <h3>Choose</h3>
+                    <p>Pick the book you like the most.</p>
+                </li>
+                <li>
+                    <h3>Order</h3>
+                    <p>Add it to your cart and enjoy reading.</p>
+                </li>
+            </ol>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Contact us</h2>
+            <form class="form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit" class="btn">Send</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 BookCatalog</p>
+        <p>☆ Designed by Kambarbek Zeine ☆</p>
+    </footer>
+
 </body>
 
 </html>
