@@ -276,3 +276,56 @@ a {
 .footer-text {
     margin: 0;
 }
+
+@media (min-width: 601px) {
+    .header {
+        padding: 0 var(--space-lg);
+    }
+
+    .header-logo {
+        font-size: 22px;
+    }
+
+    .nav-list {
+        gap: var(--space-md);
+        font-size: 16px;
+    }
+
+    .section {
+        padding: 80px var(--space-lg);
+    }
+
+    .section-title {
+        font-size: 32px;
+    }
+
+    .hero {
+        padding: 140px var(--space-lg);
+    }
+
+    .hero-title {
+        font-size: 44px;
+    }
+
+    .hero-text {
+        font-size: 18px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .steps {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-title {
+        font-size: 48px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
