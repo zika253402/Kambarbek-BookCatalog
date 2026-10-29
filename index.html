@@ -11,19 +11,27 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
 
     <header class="header">
         <a href="#hero" class="header-logo">BookCatalog</a>
-        <nav class="nav">
-            <ul class="nav-list">
-                <li><a href="#books" class="nav-link">Books</a></li>
-                <li><a href="#about" class="nav-link">How it works</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
+
+<button class="header-burger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
+    <span class="header-burger-line"></span>
+    <span class="header-burger-line"></span>
+    <span class="header-burger-line"></span>
+</button>
+
+<nav class="nav" id="main-nav">
+    <ul class="nav-list">
+        <li><a href="#books" class="nav-link">Books</a></li>
+        <li><a href="#about" class="nav-link">How it works</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+</nav>
     </header>
 
     <main>
