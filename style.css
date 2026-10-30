@@ -418,3 +418,54 @@ a {
         padding: 0;
     }
 }
+
+.btn,
+.card-button {
+    transition: background var(--transition), transform var(--transition);
+}
+
+.btn:hover,
+.card-button:hover {
+    transform: translateY(-2px);
+}
+
+.nav-link {
+    transition: color var(--transition);
+}
+
+.card {
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.hero-title,
+.hero-text {
+    animation: fade-up 0.8s ease both;
+}
+
+.hero-text {
+    animation-delay: 0.15s;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
