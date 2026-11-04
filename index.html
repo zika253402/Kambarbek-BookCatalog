@@ -11,7 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <script type="module" src="script.js"></script>
 </head>
 
 <body>
@@ -19,19 +19,20 @@
     <header class="header">
         <a href="#hero" class="header-logo">BookCatalog</a>
 
-<button class="header-burger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
-    <span class="header-burger-line"></span>
-    <span class="header-burger-line"></span>
-    <span class="header-burger-line"></span>
-</button>
+        <button class="header-burger" type="button" aria-label="Toggle menu" aria-expanded="false"
+            aria-controls="main-nav">
+            <span class="header-burger-line"></span>
+            <span class="header-burger-line"></span>
+            <span class="header-burger-line"></span>
+        </button>
 
-<nav class="nav" id="main-nav">
-    <ul class="nav-list">
-        <li><a href="#books" class="nav-link">Books</a></li>
-        <li><a href="#about" class="nav-link">How it works</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-    </ul>
-</nav>
+        <nav class="nav" id="main-nav">
+            <ul class="nav-list">
+                <li><a href="#books" class="nav-link">Books</a></li>
+                <li><a href="#about" class="nav-link">How it works</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
@@ -43,39 +44,7 @@
 
         <section id="books" class="section books">
             <h2 class="section-title">Popular books</h2>
-            <div class="cards">
-
-                <article class="card">
-                    <img src="img/TheSongOfAchilles.jpg" alt="The Song of Achilles cover" class="card-image">
-                    <h3 class="card-title">The Song of Achilles</h3>
-                    <p class="card-author">by Madeline Miller</p>
-                    <p class="card-description">A retelling of the Iliad from the perspective of Patroclus, exploring
-                        his relationship with Achilles.</p>
-                    <p class="card-price">$14.99</p>
-                    <button class="card-button">Add to Cart</button>
-                </article>
-
-                <article class="card">
-                    <img src="img/TheCruelPrince.jpg" alt="The Cruel Prince cover" class="card-image">
-                    <h3 class="card-title">The Cruel Prince</h3>
-                    <p class="card-author">by Holly Black</p>
-                    <p class="card-description">A young faerie girl must navigate the dangerous world of the Fae courts.
-                    </p>
-                    <p class="card-price">$12.99</p>
-                    <button class="card-button">Add to Cart</button>
-                </article>
-
-                <article class="card">
-                    <img src="img/ShatterMe.jpg" alt="Shatter Me cover" class="card-image">
-                    <h3 class="card-title">Shatter Me</h3>
-                    <p class="card-author">by Tahereh Mafi</p>
-                    <p class="card-description">A young woman with the power to destroy the world is hunted by those who
-                        would use her power.</p>
-                    <p class="card-price">$12.99</p>
-                    <button class="card-button">Add to Cart</button>
-                </article>
-
-            </div>
+            <div class="cards" id="books-list"></div>
         </section>
 
         <section id="about" class="section about">

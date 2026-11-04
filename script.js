@@ -1,18 +1,8 @@
-const burger = document.querySelector('.header-burger');
-const nav = document.querySelector('.nav');
+import { defaultBooks } from './js/data.js';
+import { renderBooks } from './js/render.js';
+import { initMenu } from './js/menu.js';
 
-function setMenu(isOpen) {
-    nav.classList.toggle('is-open', isOpen);
-    burger.classList.toggle('is-active', isOpen);
-    burger.setAttribute('aria-expanded', String(isOpen));
-}
+const booksList = document.querySelector('#books-list');
 
-burger.addEventListener('click', () => {
-    setMenu(!nav.classList.contains('is-open'));
-});
-
-nav.addEventListener('click', (event) => {
-    if (event.target.closest('.nav-link')) {
-        setMenu(false);
-    }
-});
+initMenu();
+renderBooks(defaultBooks, booksList);
