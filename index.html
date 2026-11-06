@@ -30,6 +30,7 @@
             <ul class="nav-list">
                 <li><a href="#books" class="nav-link">Books</a></li>
                 <li><a href="#about" class="nav-link">How it works</a></li>
+                <li><a href="#add-book" class="nav-link">Add book</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </nav>
@@ -56,6 +57,44 @@
 
             <div class="cards" id="books-list"></div>
             <p class="books-empty" id="books-empty" hidden>No books found. Try another search.</p>
+        </section>
+
+        <section id="add-book" class="section add-book">
+            <h2 class="section-title">Add a book</h2>
+            <form class="form" id="add-book-form" novalidate>
+                <label class="form-label" for="book-title">Title</label>
+                <input class="form-input" type="text" id="book-title" name="title" aria-describedby="book-title-error">
+                <p class="form-error" id="book-title-error"></p>
+
+                <label class="form-label" for="book-author">Author</label>
+                <input class="form-input" type="text" id="book-author" name="author"
+                    aria-describedby="book-author-error">
+                <p class="form-error" id="book-author-error"></p>
+
+                <label class="form-label" for="book-price">Price ($)</label>
+                <input class="form-input" type="number" id="book-price" name="price" step="0.01"
+                    aria-describedby="book-price-error">
+                <p class="form-error" id="book-price-error"></p>
+
+                <label class="form-label" for="book-category">Category</label>
+                <select class="form-input" id="book-category" name="category" aria-describedby="book-category-error">
+                    <option value="">Choose a category</option>
+                </select>
+                <p class="form-error" id="book-category-error"></p>
+
+                <label class="form-label" for="book-image">Cover image link (optional)</label>
+                <input class="form-input" type="text" id="book-image" name="image"
+                    placeholder="https://... or img/cover.jpg" aria-describedby="book-image-error">
+                <p class="form-error" id="book-image-error"></p>
+
+                <label class="form-label" for="book-description">Description</label>
+                <textarea class="form-input form-textarea" id="book-description" name="description" rows="4"
+                    aria-describedby="book-description-error"></textarea>
+                <p class="form-error" id="book-description-error"></p>
+
+                <button type="submit" class="btn form-button">Add book</button>
+                <p class="form-success" id="add-book-success" hidden>The book was added to the catalog!</p>
+            </form>
         </section>
 
         <section id="about" class="section about">
