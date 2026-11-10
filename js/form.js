@@ -3,8 +3,9 @@ import { validateBook } from './validation.js';
 
 const FIELDS = ['title', 'author', 'price', 'category', 'image', 'description'];
 
-export function initAddBookForm() {
+export function initAddBookForm(onAdd) {
     const form = document.querySelector('#add-book-form');
+    const successMessage = document.querySelector('#add-book-success');
 
     CATEGORIES.forEach((category) => {
         form.elements.category.append(new Option(category, category));
@@ -25,6 +26,7 @@ export function initAddBookForm() {
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
+        successMessage.hidden = true;
 
         const values = getValues();
         const errors = validateBook(values);
@@ -36,12 +38,24 @@ export function initAddBookForm() {
             return;
         }
 
-        console.log('Form is valid:', values);
+        onAdd({
+            id: Date.now(),
+            title: values.title.trim(),
+            author: values.author.trim(),
+            price: Number(values.price),
+            category: values.category,
+            image: values.image.trim(),
+            description: values.description.trim()
+        });
+
+        form.reset();
+        successMessage.hidden = false;
     });
 
     form.addEventListener('input', (event) => {
         if (FIELDS.includes(event.target.name)) {
             setError(event.target.name);
+            successMessage.hidden = true;
         }
     });
 }
