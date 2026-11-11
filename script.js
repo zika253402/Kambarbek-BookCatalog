@@ -4,6 +4,7 @@ import { filterBooks, initFilters } from './js/filters.js';
 import { initMenu } from './js/menu.js';
 import { initAddBookForm } from './js/form.js';
 import { loadBooks, saveBooks } from './js/storage.js';
+import { initTheme } from './js/theme.js';
 
 const booksList = document.querySelector('#books-list');
 const emptyMessage = document.querySelector('#books-empty');
@@ -23,6 +24,7 @@ function addBook(book) {
 }
 
 initMenu();
+initTheme();
 initAddBookForm(addBook);
 const getFilters = initFilters(update);
 update();

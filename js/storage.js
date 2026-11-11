@@ -23,3 +23,14 @@ export function loadBooks(fallback) {
 export function saveBooks(books) {
     write(BOOKS_KEY, books);
 }
+
+const THEME_KEY = 'bookCatalog:theme';
+
+export function loadTheme() {
+    const theme = read(THEME_KEY);
+    return theme === 'dark' || theme === 'light' ? theme : null;
+}
+
+export function saveTheme(theme) {
+    write(THEME_KEY, theme);
+}
