@@ -3,11 +3,12 @@ import { renderBooks } from './js/render.js';
 import { filterBooks, initFilters } from './js/filters.js';
 import { initMenu } from './js/menu.js';
 import { initAddBookForm } from './js/form.js';
+import { loadBooks, saveBooks } from './js/storage.js';
 
 const booksList = document.querySelector('#books-list');
 const emptyMessage = document.querySelector('#books-empty');
 
-let books = [...defaultBooks];
+let books = loadBooks(defaultBooks);
 
 function update() {
     const visibleBooks = filterBooks(books, getFilters());
@@ -17,6 +18,7 @@ function update() {
 
 function addBook(book) {
     books = [book, ...books];
+    saveBooks(books);
     update();
 }
 
