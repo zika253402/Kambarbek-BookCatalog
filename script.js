@@ -8,6 +8,7 @@ import { initTheme } from './js/theme.js';
 
 const booksList = document.querySelector('#books-list');
 const emptyMessage = document.querySelector('#books-empty');
+const countElement = document.querySelector('#books-count');
 
 let books = loadBooks(defaultBooks);
 
@@ -15,6 +16,7 @@ function update() {
     const visibleBooks = filterBooks(books, getFilters());
     renderBooks(visibleBooks, booksList);
     emptyMessage.hidden = visibleBooks.length > 0;
+    countElement.textContent = `Showing ${visibleBooks.length} of ${books.length} books`;
 }
 
 function addBook(book) {
