@@ -10,8 +10,19 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap"
         rel="stylesheet">
+    <script>
+        (function () {
+            try {
+                const theme = JSON.parse(localStorage.getItem('bookCatalog:theme'));
+                if (theme === 'dark' || theme === 'light') {
+                    document.documentElement.dataset.theme = theme;
+                }
+            } catch (error) {
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <script type="module" src="script.js"></script>
 </head>
 
 <body>
@@ -19,19 +30,23 @@
     <header class="header">
         <a href="#hero" class="header-logo">BookCatalog</a>
 
-<button class="header-burger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
-    <span class="header-burger-line"></span>
-    <span class="header-burger-line"></span>
-    <span class="header-burger-line"></span>
-</button>
+        <button class="header-burger" type="button" aria-label="Toggle menu" aria-expanded="false"
+            aria-controls="main-nav">
+            <span class="header-burger-line"></span>
+            <span class="header-burger-line"></span>
+            <span class="header-burger-line"></span>
+        </button>
 
-<nav class="nav" id="main-nav">
-    <ul class="nav-list">
-        <li><a href="#books" class="nav-link">Books</a></li>
-        <li><a href="#about" class="nav-link">How it works</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-    </ul>
-</nav>
+        <nav class="nav" id="main-nav">
+            <ul class="nav-list">
+                <li><a href="#books" class="nav-link">Books</a></li>
+                <li><a href="#about" class="nav-link">How it works</a></li>
+                <li><a href="#add-book" class="nav-link">Add book</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><button class="theme-toggle" id="theme-toggle" type="button"
+                        aria-label="Switch to dark theme">🌙</button></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
@@ -43,39 +58,58 @@
 
         <section id="books" class="section books">
             <h2 class="section-title">Popular books</h2>
-            <div class="cards">
+            <div class="toolbar">
+                <label class="visually-hidden" for="search">Search books by title</label>
+                <input class="form-input toolbar-input" type="search" id="search" placeholder="Search by title...">
 
-                <article class="card">
-                    <img src="img/TheSongOfAchilles.jpg" alt="The Song of Achilles cover" class="card-image">
-                    <h3 class="card-title">The Song of Achilles</h3>
-                    <p class="card-author">by Madeline Miller</p>
-                    <p class="card-description">A retelling of the Iliad from the perspective of Patroclus, exploring
-                        his relationship with Achilles.</p>
-                    <p class="card-price">$14.99</p>
-                    <button class="card-button">Add to Cart</button>
-                </article>
-
-                <article class="card">
-                    <img src="img/TheCruelPrince.jpg" alt="The Cruel Prince cover" class="card-image">
-                    <h3 class="card-title">The Cruel Prince</h3>
-                    <p class="card-author">by Holly Black</p>
-                    <p class="card-description">A young faerie girl must navigate the dangerous world of the Fae courts.
-                    </p>
-                    <p class="card-price">$12.99</p>
-                    <button class="card-button">Add to Cart</button>
-                </article>
-
-                <article class="card">
-                    <img src="img/ShatterMe.jpg" alt="Shatter Me cover" class="card-image">
-                    <h3 class="card-title">Shatter Me</h3>
-                    <p class="card-author">by Tahereh Mafi</p>
-                    <p class="card-description">A young woman with the power to destroy the world is hunted by those who
-                        would use her power.</p>
-                    <p class="card-price">$12.99</p>
-                    <button class="card-button">Add to Cart</button>
-                </article>
-
+                <label class="visually-hidden" for="category-filter">Filter by category</label>
+                <select class="form-input toolbar-select" id="category-filter">
+                    <option value="all">All categories</option>
+                </select>
             </div>
+
+            <p class="books-count" id="books-count" aria-live="polite"></p>
+
+            <div class="cards" id="books-list"></div>
+            <p class="books-empty" id="books-empty" hidden>No books found. Try another search.</p>
+        </section>
+
+        <section id="add-book" class="section add-book">
+            <h2 class="section-title">Add a book</h2>
+            <form class="form" id="add-book-form" novalidate>
+                <label class="form-label" for="book-title">Title</label>
+                <input class="form-input" type="text" id="book-title" name="title" aria-describedby="book-title-error">
+                <p class="form-error" id="book-title-error"></p>
+
+                <label class="form-label" for="book-author">Author</label>
+                <input class="form-input" type="text" id="book-author" name="author"
+                    aria-describedby="book-author-error">
+                <p class="form-error" id="book-author-error"></p>
+
+                <label class="form-label" for="book-price">Price ($)</label>
+                <input class="form-input" type="number" id="book-price" name="price" step="0.01"
+                    aria-describedby="book-price-error">
+                <p class="form-error" id="book-price-error"></p>
+
+                <label class="form-label" for="book-category">Category</label>
+                <select class="form-input" id="book-category" name="category" aria-describedby="book-category-error">
+                    <option value="">Choose a category</option>
+                </select>
+                <p class="form-error" id="book-category-error"></p>
+
+                <label class="form-label" for="book-image">Cover image link (optional)</label>
+                <input class="form-input" type="text" id="book-image" name="image"
+                    placeholder="https://... or img/cover.jpg" aria-describedby="book-image-error">
+                <p class="form-error" id="book-image-error"></p>
+
+                <label class="form-label" for="book-description">Description</label>
+                <textarea class="form-input form-textarea" id="book-description" name="description" rows="4"
+                    aria-describedby="book-description-error"></textarea>
+                <p class="form-error" id="book-description-error"></p>
+
+                <button type="submit" class="btn form-button">Add book</button>
+                <p class="form-success" id="add-book-success" hidden>The book was added to the catalog!</p>
+            </form>
         </section>
 
         <section id="about" class="section about">

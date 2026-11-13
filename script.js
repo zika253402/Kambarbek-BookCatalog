@@ -1,18 +1,32 @@
-const burger = document.querySelector('.header-burger');
-const nav = document.querySelector('.nav');
+import { defaultBooks } from './js/data.js';
+import { renderBooks } from './js/render.js';
+import { filterBooks, initFilters } from './js/filters.js';
+import { initMenu } from './js/menu.js';
+import { initAddBookForm } from './js/form.js';
+import { loadBooks, saveBooks } from './js/storage.js';
+import { initTheme } from './js/theme.js';
 
-function setMenu(isOpen) {
-    nav.classList.toggle('is-open', isOpen);
-    burger.classList.toggle('is-active', isOpen);
-    burger.setAttribute('aria-expanded', String(isOpen));
+const booksList = document.querySelector('#books-list');
+const emptyMessage = document.querySelector('#books-empty');
+const countElement = document.querySelector('#books-count');
+
+let books = loadBooks(defaultBooks);
+
+function update() {
+    const visibleBooks = filterBooks(books, getFilters());
+    renderBooks(visibleBooks, booksList);
+    emptyMessage.hidden = visibleBooks.length > 0;
+    countElement.textContent = `Showing ${visibleBooks.length} of ${books.length} books`;
 }
 
-burger.addEventListener('click', () => {
-    setMenu(!nav.classList.contains('is-open'));
-});
+function addBook(book) {
+    books = [book, ...books];
+    saveBooks(books);
+    update();
+}
 
-nav.addEventListener('click', (event) => {
-    if (event.target.closest('.nav-link')) {
-        setMenu(false);
-    }
-});
+initMenu();
+initTheme();
+initAddBookForm(addBook);
+const getFilters = initFilters(update);
+update();
