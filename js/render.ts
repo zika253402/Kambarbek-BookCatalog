@@ -1,19 +1,21 @@
-function createElement(tag, className, text) {
+import type { Book } from './types';
+
+function createElement<K extends keyof HTMLElementTagNameMap>(
+    tag: K,
+    className = '',
+    text?: string
+): HTMLElementTagNameMap[K] {
     const element = document.createElement(tag);
-    if (className) {
-        element.className = className;
-    }
-    if (text !== undefined) {
-        element.textContent = text;
-    }
+    if (className) element.className = className;
+    if (text !== undefined) element.textContent = text;
     return element;
 }
 
-function formatPrice(price) {
-    return `$${Number(price).toFixed(2)}`;
+function formatPrice(price: number): string {
+    return `$${price.toFixed(2)}`;
 }
 
-function createCover(book) {
+function createCover(book: Book): HTMLImageElement | HTMLDivElement {
     if (book.image) {
         const image = createElement('img', 'card-image');
         image.src = book.image;
@@ -26,9 +28,8 @@ function createCover(book) {
     return placeholder;
 }
 
-export function createBookCard(book) {
+export function createBookCard(book: Book): HTMLElement {
     const card = createElement('article', 'card');
-
     const button = createElement('button', 'card-button', 'Add to Cart');
     button.type = 'button';
 
@@ -41,10 +42,9 @@ export function createBookCard(book) {
         createElement('p', 'card-price', formatPrice(book.price)),
         button
     );
-
     return card;
 }
 
-export function renderBooks(books, container) {
+export function renderBooks(books: Book[], container: HTMLElement): void {
     container.replaceChildren(...books.map(createBookCard));
 }
