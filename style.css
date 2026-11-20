@@ -580,10 +580,3 @@ a {
         padding: 0;
     }
 }
-
-.books-count {
-    max-width: 1000px;
-    margin: 0 auto var(--space-sm);
-    color: var(--muted);
-    font-size: 14px;
-}
