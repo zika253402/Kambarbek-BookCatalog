@@ -1,12 +1,14 @@
-export const CATEGORIES = ['Mythology', 'Fantasy', 'Dystopian', 'Romance', 'Mystery'];
+import { BookCategory, type Book } from './types';
 
-export const defaultBooks = [
+export const CATEGORIES: BookCategory[] = Object.values(BookCategory);
+
+export const defaultBooks: Book[] = [
     {
         id: 1,
         title: 'The Song of Achilles',
         author: 'Madeline Miller',
         price: 14.99,
-        category: 'Mythology',
+        category: BookCategory.Mythology,
         description: 'A retelling of the Iliad from the perspective of Patroclus, exploring his relationship with Achilles.',
         image: 'img/TheSongOfAchilles.jpg'
     },
@@ -15,7 +17,7 @@ export const defaultBooks = [
         title: 'The Cruel Prince',
         author: 'Holly Black',
         price: 12.99,
-        category: 'Fantasy',
+        category: BookCategory.Fantasy,
         description: 'A young faerie girl must navigate the dangerous world of the Fae courts.',
         image: 'img/TheCruelPrince.jpg'
     },
@@ -24,7 +26,7 @@ export const defaultBooks = [
         title: 'Shatter Me',
         author: 'Tahereh Mafi',
         price: 11.99,
-        category: 'Dystopian',
+        category: BookCategory.Dystopian,
         description: 'A young woman with the power to destroy the world is hunted by those who would use her power.',
         image: 'img/ShatterMe.jpg'
     }
